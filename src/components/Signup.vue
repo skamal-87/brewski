@@ -1,9 +1,9 @@
 <template>
  <div>
     <div class="col-sm-4 col-sm-offset-4">
-        <h1>To-Do List Login </h1>
+        <h1>To-Do List Sign Up </h1>
         <hr>
-        <p>Input your Login Credentials / Sign up!</p>
+        <p>Create a username and password!</p>
         <div class="form-group">
           <input
           type="text"
@@ -20,14 +20,12 @@
             v-model="credentials.password"
           />
         </div>
-        <button class="btn btn-primary"  @click="submit()">Login</button>
-        <button class="btn btn-secondary">Sign Up</button>
+        <button class="btn btn-primary">Submit!</button>
     </div>
 </div>
 </template>
 
 <script>
-import axios from 'axios'
 export default {
   name: 'app',
     data() {
@@ -42,22 +40,6 @@ export default {
           password: ''
         }
       }
-    },
-    methods:{
-        submit(){
-            axios.get('http://localhost:3000/api/todos/test',
-                {
-                headers: {
-                    'Content-Type': 'application/json'
-                }
-                })
-                .then(function (response) {
-                    console.log(response);
-                })
-                .catch(function (error) {
-                    console.log(error);
-                });
-        }
     }
 }
 </script>
