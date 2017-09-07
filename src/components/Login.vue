@@ -20,8 +20,8 @@
             v-model="credentials.password"
           />
         </div>
-        <button class="btn btn-primary"  @click="submit()">Login</button>
-        <button class="btn btn-secondary">Sign Up</button>
+        <button class="btn btn-primary"  @click="login()">Login</button>
+        <button class="btn btn-secondary" @click="signup()">Sign Up</button>
     </div>
 </div>
 </template>
@@ -44,8 +44,24 @@ export default {
       }
     },
     methods:{
-        submit(){
-            axios.get('http://localhost:3000/api/todos/test',
+        login(){
+            axios.post('http://localhost:3000/api/login/',
+              this.credentials,
+                {
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+                })
+                .then(function (response) {
+                    console.log(response);
+                })
+                .catch(function (error) {
+                    console.log(error);
+                });
+        },
+        signup(){
+            axios.post('http://localhost:3000/api/signup/',
+              this.credentials,
                 {
                 headers: {
                     'Content-Type': 'application/json'

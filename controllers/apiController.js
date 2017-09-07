@@ -1,5 +1,7 @@
 var Todos = require('../models/todoModel');
 var bodyParser = require('body-parser');
+var Users = require('../models/usersModel');
+const utils = require('../config/util');
 
 module.exports = function(app) {
     
@@ -12,6 +14,29 @@ module.exports = function(app) {
             if (err) throw err;
             
             res.send(todos);
+        });
+        
+    });
+
+    app.post('/api/login/', function(req, res) {
+        let userName = req.body.userName;
+        let password = req.body.password;
+        Users.findOne({ username: userName, password: password }, function(err, users) {
+        if (users) {
+            utils.sendSuccessResponse(users, res);} 
+        else {
+            utils.sendErrorResponse(users,res);} 
+        });
+        
+    });
+
+    app.post('/api/signup/', function(req, res) {
+        let userName = req.body.userName;
+        let password = req.body.password;
+        Users.create({ username: userName, password: password}, function(err, results) {
+            if (err) throw err;
+            res.send(results);
+            // this.$router.push('/home')
         });
         
     });
