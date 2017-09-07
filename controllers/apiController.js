@@ -23,21 +23,29 @@ module.exports = function(app) {
         let password = req.body.password;
         Users.findOne({ username: userName, password: password }, function(err, users) {
         if (users) {
-            utils.sendSuccessResponse(users, res);} 
+            utils.sendSuccessResponse(users, res);
+            } 
         else {
-            utils.sendErrorResponse(users,res);} 
+            utils.sendErrorResponse(res);
+            } 
         });
         
     });
 
     app.post('/api/signup/', function(req, res) {
-        let userName = req.body.userName;
-        let password = req.body.password;
-        Users.create({ username: userName, password: password}, function(err, results) {
-            if (err) throw err;
-            res.send(results);
-            // this.$router.push('/home')
-        });
+
+        if (req.body.userName && req.body.password) {
+            let userName = req.body.userName;
+            let password = req.body.password;
+            Users.create({ username: userName, password: password}, function(err, results) {
+                if (err) utils.sendErrorResponse(res);
+                utils.sendSuccessResponse(results, res);
+                // this.$router.push('/home')
+            });
+        } else { 
+            console.log('check');
+            utils.sendErrorResponse(res);}
+
         
     });
     

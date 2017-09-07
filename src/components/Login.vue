@@ -22,6 +22,11 @@
         </div>
         <button class="btn btn-primary"  @click="login()">Login</button>
         <button class="btn btn-secondary" @click="signup()">Sign Up</button>
+        <br>
+        <br>
+        <div class="alert alert-danger" v-if="error">
+          <strong>Login Error!</strong> {{errorMessage}}
+        </div>
     </div>
 </div>
 </template>
@@ -40,7 +45,9 @@ export default {
         credentials: {
           userName: '',
           password: ''
-        }
+        },
+        error: false,
+        errorMessage: ''
       }
     },
     methods:{
@@ -55,8 +62,9 @@ export default {
                 .then(function (response) {
                     console.log(response);
                 })
-                .catch(function (error) {
-                    console.log(error);
+                .catch(e=> {
+                  this.error = true
+                  this.errorMessage = 'Incorrect Login information'
                 });
         },
         signup(){
@@ -70,8 +78,9 @@ export default {
                 .then(function (response) {
                     console.log(response);
                 })
-                .catch(function (error) {
-                    console.log(error);
+                .catch(e=> {
+                  this.error = true
+                  this.errorMessage = 'Sign Up requires a valid username and password'
                 });
         }
     }

@@ -4,12 +4,11 @@
 
 module.exports = {};
 
-const sendErrorResponse = (error, response) => {
+const sendErrorResponse = ( response) => {
   response.status(401);
   response.json({
     "status": 401,
-    "message": "Error",
-    "error": error
+    "message": "Error"
   });
 };
 

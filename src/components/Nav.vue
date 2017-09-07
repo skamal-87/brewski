@@ -8,6 +8,7 @@
       <ul class="nav navbar-nav">
         <router-link to="/" activeClass="active" tag="li"><a>Home</a></router-link>
         <router-link to="/login" activeClass="active" tag="li"><a>Login</a></router-link>
+        <router-link to="/todos" activeClass="active" tag="li"><a>To-Do</a></router-link>
       </ul>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
