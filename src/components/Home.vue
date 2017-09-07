@@ -1,8 +1,12 @@
 <template>
   <div id="app">
     <img src="../assets/to-do-list.png">
+
     <h1>To-Do List</h1>
     <h2>Get your stuff done!</h2>
+    <modal name="hello-world">
+      hello, world!
+    </modal>
   </div>
 </template>
 
@@ -13,7 +17,8 @@ export default {
     return {
       msg: 'Welcome to Your Vue.js App'
     }
-  }
+  },
+  mounted(){this.$store.dispatch('initData');}
 }
 </script>
 

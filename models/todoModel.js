@@ -5,6 +5,7 @@ var Schema = mongoose.Schema;
 var todoSchema = new Schema({
     username: String,
     todo: String,
+    description: String,
     isDone: Boolean,
     hasAttachment: Boolean
 });

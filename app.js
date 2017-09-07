@@ -25,7 +25,7 @@ app.all('/*', function(req, res, next) {
   });
 
 mongoose.connect(config.getDbConnectionString());
-setupController(app);
+ setupController(app);
 // usersController(app);
 apiController(app);
 

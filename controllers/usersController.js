@@ -6,11 +6,13 @@ module.exports = function(app){
         var starterUsers = [
             {
                 username: 'test',
-                password: 'test'
+                password: 'test',
+                first: true
             },
             {
                 username: 'test1',
-                password: 'test1'
+                password: 'test1',
+                first: true
             }
         ];
         Users.create(starterUsers,function(err,results){

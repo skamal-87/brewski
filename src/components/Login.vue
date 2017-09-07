@@ -44,7 +44,9 @@ export default {
         buttonText: 'Submit',
         credentials: {
           userName: '',
-          password: ''
+          password: '',
+          first: true,
+          authed: false
         },
         error: false,
         errorMessage: ''
@@ -59,10 +61,21 @@ export default {
                     'Content-Type': 'application/json'
                 }
                 })
-                .then(function (response) {
-                    console.log(response);
+                .then(response => {
+                    this.credentials.userName = response.data.data.username
+                    this.credentials.password = response.data.data.password
+                    this.credentials.first = response.data.data.first
+                    var credentials = {
+                      userName: this.credentials.userName,
+                      password: this.credentials.password,
+                      first: this.credentials.first,
+                      authed: true
+                      }
+                    this.$store.dispatch('initUser', credentials)
+                    this.$router.push('/')
                 })
                 .catch(e=> {
+                  console.log(e)
                   this.error = true
                   this.errorMessage = 'Incorrect Login information'
                 });

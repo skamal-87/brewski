@@ -1,29 +1,21 @@
 <template>
-    <div class="col-sm-6 col-md-4">
-        <div class="panel panel-success">
-            <div class="panel-heading">
-                <h3 class="panel-title">
-                    ayyy
-                    <SMALL>(Details: )</small>
-                </h3>
-            </div>
-            <div class="panel-body">
-                <div class="pull-left">
-                    <input 
-                        type="number"
-                        class="form-control"
-                        placeholder="Quantity"
-                        v-model="quantity"
-                        >
-                </div>
-            </div>
-        </div>
+<div class="list-group">
+  <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+    <div class="d-flex w-100 justify-content-between">
+      <h5 class="mb-1">{{todo.todo}}</h5>
+      <p class="mb-1">{{todo.description}}</p>
     </div>
+    <small >Completed: {{todo.isDone}}</small>
+    <br>
+    <small>User: {{todo.username}}</small>
+  </a>
+</div>
 </template>
 
 <script>
 export default {
   name: 'app',
+  props: ['todo'],
   data () {
     return {
       quantity: 0

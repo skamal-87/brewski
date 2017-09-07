@@ -1,18 +1,24 @@
 <template>
     <div>
-        <app-todos></app-todos>
+        <app-todos v-for="todo in todos" :todo="todo"></app-todos>
     </div>
 </template>
 
 <script>
 import Todos from './Todos.vue'
+import axios from 'axios';
 export default {
+    data () {
+        return {
+        username: ''
+        }
+    },
     components: {
         appTodos: Todos
     },
     computed: {
         todos() {
-            // return this.$store.getters.stocks;
+            return this.$store.getters.userTodo;
         }
     }
 }
