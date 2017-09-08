@@ -5,7 +5,16 @@ var config = require('./config');
 var setupController = require('./controllers/setupController');
 var apiController = require('./controllers/apiController');
 var usersController = require('./controllers/usersController');
+var authController = require('./controllers/auth');
 var port = process.env.PORT || 3000;
+var userController = require('./controllers/user');
+var passport = require('passport');
+var authController = require('./controllers/auth');
+var router = express.Router();
+var bodyParser = require('body-parser');
+
+
+
 
 app.use('/assets',express.static(__dirname + '/public'));
 
@@ -23,10 +32,23 @@ app.all('/*', function(req, res, next) {
       next();
     }
   });
+  
+
 
 mongoose.connect(config.getDbConnectionString());
-setupController(app);
-usersController(app);
-apiController(app);
+app.use(bodyParser.urlencoded({
+  extended: true
+}));
 
+app.use(passport.initialize());
+
+router.route('/users')
+  .post(userController.postUsers)
+  .get(authController.isAuthenticated, userController.getUsers);
+// setupController(app);
+// usersController(app);
+// apiController(app);
+
+// Create endpoint handlers for /usersn
+app.use('/api', router);
 app.listen(port);

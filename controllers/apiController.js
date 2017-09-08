@@ -1,7 +1,8 @@
 var Todos = require('../models/todoModel');
 var bodyParser = require('body-parser');
-var Users = require('../models/usersModel');
+var User = require('../models/usersModel');
 const utils = require('../config/util');
+var userController = require('./user');
 
 module.exports = function(app) {
     
@@ -18,36 +19,31 @@ module.exports = function(app) {
         
     });
 
-    app.post('/api/login/', function(req, res) {
-        let userName = req.body.userName;
-        let password = req.body.password;
-        Users.findOne({ username: userName, password: password }, function(err, users) {
-        if (users) {
-            utils.sendSuccessResponse(users, res);
-            } 
-        else {
-            utils.sendErrorResponse(res);
-            } 
+
+    
+    // Create endpoint /api/users for POST
+    app.post('/api/users', function(req, res) {
+      var user = new User({
+        username: req.body.username,
+        password: req.body.password
+      });
+    
+      user.save(function(err) {
+        if (err)
+          res.send(err);
+    
+        res.json({ message: 'New user added!' });
+      });
+    });
+
+    app.get('/api/users', function(req, res) {
+        User.find(function(err, users) {
+          if (err)
+            res.send(err);
+      
+          res.json(users);
         });
-        
-    });
-
-    app.post('/api/signup/', function(req, res) {
-
-        if (req.body.userName && req.body.password) {
-            let userName = req.body.userName;
-            let password = req.body.password;
-            Users.create({ username: userName, password: password}, function(err, results) {
-                if (err) utils.sendErrorResponse(res);
-                utils.sendSuccessResponse(results, res);
-                // this.$router.push('/home')
-            });
-        } else { 
-            console.log('check');
-            utils.sendErrorResponse(res);}
-
-        
-    });
+      });
     
     app.get('/api/todo/:id', function(req, res) {
        
