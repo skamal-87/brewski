@@ -2,13 +2,13 @@
 <nav class="navbar navbar-default">
   <div class="container-fluid">
     <div class="navbar-header">
-      <router-link to="/" class="navbar-brand">To-Do List</router-link>
+      <router-link to="/" class="navbar-brand">Brewski</router-link>
     </div>
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
         <router-link to="/" activeClass="active" tag="li"><a>Home</a></router-link>
         <router-link to="/login" activeClass="active" tag="li"><a>Login</a></router-link>
-        <router-link to="/todos" activeClass="active" tag="li"><a>To-Do</a></router-link>
+        <router-link to="/beers" activeClass="active" tag="li"><a>Brews</a></router-link>
       </ul>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->

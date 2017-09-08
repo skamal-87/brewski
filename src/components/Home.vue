@@ -2,8 +2,8 @@
   <div id="app">
     <img src="../assets/to-do-list.png">
 
-    <h1>To-Do List</h1>
-    <h2>Get your stuff done!</h2>
+    <h1>Brewski for Youski</h1>
+    <h2>Log your brews</h2>
     <modal name="hello-world">
       hello, world!
     </modal>

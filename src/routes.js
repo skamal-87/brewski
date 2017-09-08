@@ -6,6 +6,6 @@ import store from './store/store.js';
 export const routes = [
     {path: '/', component: Home},
     {path: '/login',component: Login},
-    {path: '/todos',component: TodoList}
+    {path: '/beers',component: TodoList}
 
 ]

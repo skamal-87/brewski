@@ -1,9 +1,7 @@
 const state = {
     credentials: {
         username: '',
-        password: '',
-        first: true,
-        authed: false
+        password: ''
     }
 };
 

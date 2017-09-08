@@ -35,15 +35,6 @@ module.exports = function(app) {
         res.json({ message: 'New user added!' });
       });
     });
-
-    app.get('/api/users', function(req, res) {
-        User.find(function(err, users) {
-          if (err)
-            res.send(err);
-      
-          res.json(users);
-        });
-      });
     
     app.get('/api/todo/:id', function(req, res) {
        

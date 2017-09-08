@@ -24,8 +24,9 @@ app.all('/*', function(req, res, next) {
     // CORS headers
     res.header("Access-Control-Allow-Origin", "*"); // restrict it to the required domain
     res.header('Access-Control-Allow-Methods', 'GET,POST,OPTIONS');
+    res.header('Access-Control-Allow-Credentials', true);
     // Set custom headers for CORS
-    res.header('Access-Control-Allow-Headers', 'Content-type,Accept,X-Access-Token');
+    res.header('Access-Control-Allow-Headers', 'Authorization,Content-type,Accept,X-Access-Token');
     if (req.method == 'OPTIONS') {
       res.status(200).end();
     } else {
@@ -43,11 +44,14 @@ app.use(bodyParser.urlencoded({
 app.use(passport.initialize());
 
 router.route('/users')
-  .post(userController.postUsers)
+  // .post(userController.postUsers)
   .get(authController.isAuthenticated, userController.getUsers);
+  
 // setupController(app);
 // usersController(app);
-// apiController(app);
+
+// .post in router.toure isn't working
+apiController(app);
 
 // Create endpoint handlers for /usersn
 app.use('/api', router);

@@ -17,7 +17,7 @@ var UserSchema = new Schema({
 // Execute before each user.save() call
 UserSchema.pre('save', function(callback) {
     var user = this;
-  
+    console.log(user);
     // Break out if the password hasn't changed
     if (!user.isModified('password')) return callback();
   
@@ -32,10 +32,10 @@ UserSchema.pre('save', function(callback) {
       });
     });
   });
-  
+
   UserSchema.methods.verifyPassword = function(password, cb) {
     bcrypt.compare(password, this.password, function(err, isMatch) {
-      if (err) return cb(err);
+      if (err) return cb('err');
       cb(null, isMatch);
     });
   };

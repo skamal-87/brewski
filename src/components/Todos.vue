@@ -2,12 +2,12 @@
 <div class="list-group">
   <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
     <div class="d-flex w-100 justify-content-between">
-      <h5 class="mb-1">{{todo.todo}}</h5>
+      <h5 class="mb-1">{{todo.nameDisplay}}</h5>
       <p class="mb-1">{{todo.description}}</p>
     </div>
-    <small >Completed: {{todo.isDone}}</small>
+    <small >Origin: {{todo.name}}</small>
     <br>
-    <small>User: {{todo.username}}</small>
+    <small>Alcohol by Volume: {{todo.abv}}</small>
   </a>
 </div>
 </template>

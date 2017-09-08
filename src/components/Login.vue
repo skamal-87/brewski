@@ -1,7 +1,7 @@
 <template>
  <div>
     <div class="col-sm-4 col-sm-offset-4">
-        <h1>To-Do List Login </h1>
+        <h1>Brewski for Youski Login </h1>
         <hr>
         <p>Input your Login Credentials / Sign up!</p>
         <div class="form-group">
@@ -44,9 +44,7 @@ export default {
         buttonText: 'Submit',
         credentials: {
           userName: '',
-          password: '',
-          first: true,
-          authed: false
+          password: ''
         },
         error: false,
         errorMessage: ''
@@ -54,24 +52,20 @@ export default {
     },
     methods:{
         login(){
-            axios.post('http://localhost:3000/api/login/',
-              this.credentials,
-                {
-                headers: {
-                    'Content-Type': 'application/json'
-                }
-                })
+            axios.get('http://localhost:3000/api/users/',
+            {
+            auth: {
+              username: this.credentials.userName,
+              password: this.credentials.password
+            },
+            headers: {
+              'Accept': 'application/json',
+              'Content-Type': 'application/json',
+            }
+            })
                 .then(response => {
-                    this.credentials.userName = response.data.data.username
-                    this.credentials.password = response.data.data.password
-                    this.credentials.first = response.data.data.first
-                    var credentials = {
-                      userName: this.credentials.userName,
-                      password: this.credentials.password,
-                      first: this.credentials.first,
-                      authed: true
-                      }
-                    this.$store.dispatch('initUser', credentials)
+                    console.log(response);
+                    this.$store.dispatch('initUser', this.credentials)
                     this.$router.push('/')
                 })
                 .catch(e=> {
@@ -81,12 +75,17 @@ export default {
                 });
         },
         signup(){
-            axios.post('http://localhost:3000/api/signup/',
-              this.credentials,
+            axios.post('http://localhost:3000/api/users/',
+              {
+              username: this.credentials.userName,
+              password: this.credentials.password
+              },
                 {
-                headers: {
-                    'Content-Type': 'application/json'
-                }
+
+              headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+              }
                 })
                 .then(function (response) {
                     console.log(response);

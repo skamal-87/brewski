@@ -1,23 +1,22 @@
 export default [
     {
-        username: 'test',
-        todo: 'Buy Milk',
-        description: 'Go to the store and buy milk',
-        isDone: false,
-        hasAttachment: false
+            "id": "oeGSxs",
+            "name": "Naughty 90",
+            "nameDisplay": "Naughty 90",
+            "description": "Our Naughty 90 Oaked IPA was inspired by ocean bound, oak barreled brews of the 1800’s. Packed with hops on a 90-minute schedule, uniquely malted, then aged on a bed of oak, this IPA delivers a taste that is both innovative and timeless.",
+            "abv": "6.2",
+            "icon": "https://s3.amazonaws.com/brewerydbapi/beer/oeGSxs/upload_FiPLQC-icon.png",
+            "name": "North American Origin Ales"
+
     },
     {
-        username: 'test',
-        todo: 'Feed dog',
-        description: 'Go to the store and buy dog food',
-        isDone: false,
-        hasAttachment: false
-    },
-    {
-        username: 'test',
-        todo: 'Learn Node',
-        description: 'Get on Udemy and learn Node',
-        isDone: false,
-        hasAttachment: false
-    }
+        "id": "12345",
+        "name": "Heineken",
+        "nameDisplay": "Heineken",
+        "description": "A pale lager beer with 5% alcohol by volume produced by the Dutch brewing company Heineken International. Heineken is well known for its signature green bottle and red star.",
+        "abv": "5",
+        "icon": "https://s3.amazonaws.com/brewerydbapi/beer/oeGSxs/upload_FiPLQC-icon.png",
+        "name": "Pale Lager Beer"
+
+}
 ]
