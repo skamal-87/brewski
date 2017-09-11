@@ -6,6 +6,7 @@ var setupController = require('./controllers/setupController');
 var apiController = require('./controllers/apiController');
 var usersController = require('./controllers/usersController');
 var authController = require('./controllers/auth');
+var beerController = require('./controllers/beerInitController');
 var port = process.env.PORT || 3000;
 var userController = require('./controllers/user');
 var passport = require('passport');
@@ -46,13 +47,13 @@ app.use(passport.initialize());
 router.route('/users')
   // .post(userController.postUsers)
   .get(authController.isAuthenticated, userController.getUsers);
-  
+
 // setupController(app);
 // usersController(app);
-
+beerController(app);
 // .post in router.toure isn't working
 apiController(app);
 
-// Create endpoint handlers for /usersn
+// Create endpoint handlers for /api
 app.use('/api', router);
 app.listen(port);

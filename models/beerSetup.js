@@ -1,6 +1,7 @@
 var mongoose = require('mongoose');
 
-// Define our beer schema
+var Schema = mongoose.Schema;
+
 var BeerSchema   = new mongoose.Schema({
     id: String,
     name: String,
@@ -11,5 +12,6 @@ var BeerSchema   = new mongoose.Schema({
     category: String
 });
 
-// Export the Mongoose model
-module.exports = mongoose.model('Beer', BeerSchema);
+var Beerz = mongoose.model('Beerz',BeerSchema);
+
+module.exports = Beerz;
