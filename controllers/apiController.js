@@ -3,6 +3,7 @@ var bodyParser = require('body-parser');
 var User = require('../models/usersModel');
 const utils = require('../config/util');
 var userController = require('./user');
+var Beers = require('../models/beerSetup');
 
 module.exports = function(app) {
     
@@ -15,6 +16,14 @@ module.exports = function(app) {
         Todos.find({ username: userName }, function(err, todos) {
             if (err) throw err;
             res.send(todos);
+        });
+        
+    });
+
+    app.get('/api/beerz/', function(req, res) {
+        Beers.find(function(err, beers) {
+            if (err) throw err;
+            res.send(beers);
         });
         
     });

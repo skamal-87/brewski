@@ -7,7 +7,6 @@ const state = {
         nameDisplay: '',
         description: '',
         abv: 0,
-        icong: '',
         category: ''
     }
 };
