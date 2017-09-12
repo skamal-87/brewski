@@ -45,12 +45,11 @@ module.exports = function(app) {
       });
     });
     
-    app.get('/api/todo/:id', function(req, res) {
-       
-       Todos.findById({ _id: req.params.id }, function(err, todo) {
+    app.post('/api/beer/', function(req, res) {
+       console.log(req.body);
+       Beers.findOne({ name: req.body.name }, function(err, beer) {
            if (err) throw err;
-           
-           res.send(todo);
+           res.send(beer);
        });
         
     });

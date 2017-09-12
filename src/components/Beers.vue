@@ -2,12 +2,12 @@
 <div class="list-group">
   <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
     <div class="d-flex w-100 justify-content-between">
-      <h5 class="mb-1">{{todo.nameDisplay}}</h5>
-      <p class="mb-1">{{todo.description}}</p>
+      <h5 class="mb-1">{{ub.nameDisplay}}</h5>
+      <p class="mb-1">{{ub.description}}</p>
     </div>
-    <small >Origin: {{todo.name}}</small>
+    <small >Category: {{ub.category}}</small>
     <br>
-    <small>Alcohol by Volume: {{todo.abv}}</small>
+    <small>Alcohol by Volume: {{ub.abv}}</small>
   </a>
 </div>
 </template>
@@ -15,7 +15,7 @@
 <script>
 export default {
   name: 'app',
-  props: ['todo'],
+  props: ['ub'],
   data () {
     return {
       quantity: 0
