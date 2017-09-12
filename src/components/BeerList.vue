@@ -6,7 +6,7 @@
         </select>
         <a href="#" class="btn btn-xs btn-success" @click="addBeer"><span class="glyphicon glyphicon-plus"></span> Add Beer</a>
         <div>
-            <app-beers v-for="ub in fullList" :ub="ub"></app-beers>
+            <app-beers v-for="ub in usersBeers" :ub="ub"></app-beers>
         </div>
     </div>
 </template>
@@ -18,7 +18,7 @@ import config from '../config.js';
 export default {
     data () {
         return {
-        username: '',
+        username: {},
         selected: '',
         fullList: [],
         usersBeers: [],
@@ -27,6 +27,9 @@ export default {
     },
     components: {
         appBeers: Beers
+    },
+    mount(){
+        this.username = this.$store.getters('userCred')
     },
     methods: {
         addBeer() {
@@ -41,7 +44,13 @@ export default {
             .then(response => {
             console.log(response);
             this.fullList = response.data;
-            this.usersBeers.push(this.fullList)})}},
+            this.usersBeers.push(this.fullList)
+            var errthang = this.usersBeers
+            console.log(errthang);
+            this.$store.dispatch('setBeers', errthang)
+                }
+            )}
+            },
     computed: {
         beers() {
             return this.$store.getters.beerData;

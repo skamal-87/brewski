@@ -4,6 +4,7 @@ var User = require('../models/usersModel');
 const utils = require('../config/util');
 var userController = require('./user');
 var Beers = require('../models/beerSetup');
+var UsersBeer = require('../models/usersBeer');
 
 module.exports = function(app) {
     
@@ -54,31 +55,31 @@ module.exports = function(app) {
         
     });
     
-    app.post('/api/todo', function(req, res) {
-        
-        if (req.body.id) {
-            Todos.findByIdAndUpdate(req.body.id, { todo: req.body.todo, isDone: req.body.isDone, hasAttachment: req.body.hasAttachment }, function(err, todo) {
-                if (err) throw err;
-                
-                res.send('Success');
-            });
-        }
-        
-        else {
-           
-           var newTodo = Todos({
-               username: 'test',
-               todo: req.body.todo,
-               isDone: req.body.isDone,
-               hasAttachment: req.body.hasAttachment
-           });
-           newTodo.save(function(err) {
-               if (err) throw err;
-               res.send('Success');
-           });
-            
-        }
-        
+    app.post('/api/usersbeer', function(req, res) {
+        UsersBeer.findOne({
+            name: req.body.username
+        }).exec(function(err, user) {
+            if (user) {
+                UsersBeer.findOneAndUpdate({
+                    name: req.body.username
+                }, {
+                    beers: req.body.beers
+                }, function(err, todo) {
+                    if (err) throw err;
+
+                    res.send('Success');
+                });
+            } else {
+                var newBeers = UsersBeer({
+                    username: req.body.username,
+                    beers: req.body.beers
+                });
+                newBeers.save(function(err) {
+                    if (err) throw err;
+                    res.send('Success');
+                });
+            }
+        })
     });
     
     app.delete('/api/todo', function(req, res) {

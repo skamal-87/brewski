@@ -6,9 +6,9 @@
     </div>
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
-        <router-link to="/" activeClass="active" tag="li"><a>Home</a></router-link>
         <router-link to="/login" activeClass="active" tag="li"><a>Login</a></router-link>
         <router-link to="/beers" activeClass="active" tag="li"><a>Brews</a></router-link>
+        <li activeClass="active" class="btn-primary" @click="saveData"><a>Save</a></li>
       </ul>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
@@ -16,8 +16,30 @@
 </template>
 
 <script>
+import axios from 'axios';
+import config from '../config.js';
 export default {
-}
+  methods: {
+    saveData() {
+      let user = this.$store.getters.userCred;
+      let beerData = this.$store.getters.userBeer;
+      var usersBeer = {
+        username: user.userName,
+        beers: beerData
+      }
+      axios.post(config.URL + `/api/usersbeer`,
+            usersBeer
+            ,
+            {
+            headers: {
+                'Content-Type': 'application/json'
+            }
+            })
+            .then(response => {
+            console.log(response);
+                }
+            )}
+            }}
 </script>
 
 <style>

@@ -8,27 +8,32 @@ const state = {
         description: '',
         abv: 0,
         category: ''
-    }
+    },
+    userBeer: []
 };
 
 const mutations = {
-    'SET_BEER' (state,Beer) {
+    'INIT_BEER' (state,Beer) {
         state.beer = Beer;
+    },
+    'SET_BEER' (state, errthang){
+        state.userBeer = errthang;
     }
 };
 
 const actions = {
-    setTodo: ({commit}, Beer) => {
-        commit('SET_TODO', Beer);
+    initData: ({commit}, Beer) => {
+        commit('INIT_BEER',Beer);
     },
-    initData: ({commit}) => {
-        commit('SET_BEER',Beer);
+    setBeers: ({commit}, errthang) => {
+        commit('SET_BEER', errthang);
     }
+
 };
 
 const getters = {
-    userTodo: state => {
-        return state.beer;
+    userBeer: state => {
+        return state.userBeer;
     }
 };
 

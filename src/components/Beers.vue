@@ -2,7 +2,7 @@
 <div class="list-group">
   <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
     <div class="d-flex w-100 justify-content-between">
-      <h5 class="mb-1">{{ub.nameDisplay}}</h5>
+      <h5 class="mb-1"><b>{{ub.nameDisplay}}</b></h5>
       <p class="mb-1">{{ub.description}}</p>
     </div>
     <small >Category: {{ub.category}}</small>

@@ -89,6 +89,8 @@ export default {
                 })
                 .then(function (response) {
                     console.log(response);
+                    this.$store.dispatch('initUser', this.credentials)
+                    this.$router.push('/')
                 })
                 .catch(e=> {
                   this.error = true

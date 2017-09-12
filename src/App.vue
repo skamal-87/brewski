@@ -25,6 +25,8 @@ export default {
   },
   created() {
     this.$store.dispatch('initBeer');
+    },
+    updated(){
     }
 }
 </script>
