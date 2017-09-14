@@ -32,11 +32,17 @@ export default {
         this.username = this.$store.getters('userCred')
     },
     computed: {
-        remove(remover){
-            this.fullList.pop(remover);
-        }
+
     },
     methods: {
+        remove(remover){
+            for(var i=0; i < this.usersBeers.length; i++) {
+                if(this.usersBeers[i].id == remover.id)
+                {
+                    this.usersBeers.splice(i,1);
+                }
+                }
+        },
         addBeer() {
             axios.post(config.URL + `/api/beer`,
             {"name":this.selected}
@@ -47,11 +53,9 @@ export default {
             }
             })
             .then(response => {
-            console.log(response);
             this.fullList = response.data;
             this.usersBeers.push(this.fullList)
             var errthang = this.usersBeers
-            console.log(errthang);
             this.$store.dispatch('setBeers', errthang)
                 }
             )}
