@@ -6,7 +6,7 @@
         </select>
         <a href="#" class="btn btn-xs btn-success" @click="addBeer"><span class="glyphicon glyphicon-plus"></span> Add Beer</a>
         <div>
-            <app-beers v-for="ub in usersBeers" :ub="ub"></app-beers>
+            <app-beers v-for="ub in usersBeers" :ub="ub" @yRemove="remove($event)"></app-beers>
         </div>
     </div>
 </template>
@@ -30,6 +30,11 @@ export default {
     },
     mount(){
         this.username = this.$store.getters('userCred')
+    },
+    computed: {
+        remove(remover){
+            this.fullList.pop(remover);
+        }
     },
     methods: {
         addBeer() {

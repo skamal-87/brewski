@@ -18,6 +18,9 @@ const mutations = {
     },
     'SET_BEER' (state, errthang){
         state.userBeer = errthang;
+    },
+    'INIT_USER_BEER'(state,ub){
+        state.userBeer = ub
     }
 };
 
@@ -27,6 +30,9 @@ const actions = {
     },
     setBeers: ({commit}, errthang) => {
         commit('SET_BEER', errthang);
+    },
+    initUserBeer: ({commit}, ub) => {
+        commit('INIT_USER_BEER', ub);
     }
 
 };

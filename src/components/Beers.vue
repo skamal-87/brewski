@@ -1,14 +1,25 @@
 <template>
-<div class="list-group">
-  <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
-    <div class="d-flex w-100 justify-content-between">
-      <h5 class="mb-1"><b>{{ub.nameDisplay}}</b></h5>
-      <p class="mb-1">{{ub.description}}</p>
-    </div>
-    <small >Category: {{ub.category}}</small>
-    <br>
-    <small>Alcohol by Volume: {{ub.abv}}</small>
-  </a>
+<div class="container">
+        <div class="row mb-5">
+            <div class="col-sm-6 col-md-4 col-lg-3 mt-4">
+                <div class="card card-inverse card-info">
+                    <div class="card-block">
+                        <figure class="profile">
+                            <img :src="ub.icon" class="profile-avatar" alt="">
+                        </figure>
+                        <h4 class="card-title mt-3">{{ub.nameDisplay}}</h4>
+                        <div class="meta card-text">
+                            <p>{{ub.category}}</p>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <small>Alcohol by Volume: {{ub.abv}}</small>
+                        <button class="btn btn-info float-right btn-sm" @click="remove(ub)">Remove</button>
+                        <br>
+                    </div>
+                </div>
+        </div>
+        </div>
 </div>
 </template>
 
@@ -19,6 +30,11 @@ export default {
   data () {
     return {
       quantity: 0
+    }
+  },
+  methods: {
+    remove(remover){
+      this.$emit('yRemove',remover)
     }
   }
 }

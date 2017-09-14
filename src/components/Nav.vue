@@ -6,7 +6,8 @@
     </div>
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
-        <router-link to="/login" activeClass="active" tag="li"><a>Login</a></router-link>
+        <router-link to="/logout" activeClass="active"  tag="li" v-if="loggedIn"><a>Logout</a></router-link>
+        <router-link to="/login" activeClass="active"  tag="li" v-else><a>Login</a></router-link>
         <router-link to="/beers" activeClass="active" tag="li"><a>Brews</a></router-link>
         <li activeClass="active" class="btn-primary" @click="saveData"><a>Save</a></li>
       </ul>
@@ -19,6 +20,11 @@
 import axios from 'axios';
 import config from '../config.js';
 export default {
+  computed: {
+    loggedIn() {
+      return this.$store.getters.userCred.loggedIn
+      }
+  },
   methods: {
     saveData() {
       let user = this.$store.getters.userCred;

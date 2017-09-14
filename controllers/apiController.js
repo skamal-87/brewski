@@ -55,13 +55,30 @@ module.exports = function(app) {
         
     });
     
-    app.post('/api/usersbeer', function(req, res) {
+
+    app.post('/api/savedbeer', function(req, res) {
+        console.log(req.body.username);
         UsersBeer.findOne({
-            name: req.body.username
+            username: req.body.username
+        }).exec(function(err, userBeer) {
+            if (userBeer) {
+                res.send(userBeer.beers);
+            } else {
+                    if (err) utils.sendErrorResponse(err, res);
+                    res.send([]);
+ 
+            }
+        })
+    });
+
+    app.post('/api/usersbeer', function(req, res) {
+        console.log(req.body.username);
+        UsersBeer.findOne({
+            username: req.body.username
         }).exec(function(err, user) {
             if (user) {
                 UsersBeer.findOneAndUpdate({
-                    name: req.body.username
+                    username: req.body.username
                 }, {
                     beers: req.body.beers
                 }, function(err, todo) {

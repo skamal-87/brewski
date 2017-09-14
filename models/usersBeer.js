@@ -9,6 +9,7 @@ var UsersBeerSchema   = new mongoose.Schema({
     nameDisplay: String,
     description: String,
     abv: Number,
+    icon: String,
     category: String
 }]
 });

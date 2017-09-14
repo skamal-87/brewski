@@ -44,7 +44,8 @@ export default {
         buttonText: 'Submit',
         credentials: {
           userName: '',
-          password: ''
+          password: '',
+          loggedIn: false
         },
         error: false,
         errorMessage: ''
@@ -65,6 +66,7 @@ export default {
             })
                 .then(response => {
                     console.log(response);
+                    this.credentials.loggedIn = true;
                     this.$store.dispatch('initUser', this.credentials)
                     this.$router.push('/')
                 })

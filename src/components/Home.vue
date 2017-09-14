@@ -11,6 +11,8 @@
 </template>
 
 <script>
+import axios from 'axios';
+import config from '../config.js';
 export default {
   name: 'app',
   data () {
@@ -18,7 +20,24 @@ export default {
       msg: 'Welcome to Your Vue.js App'
     }
   },
-  mounted(){this.$store.dispatch('initData');}
+  mounted(){
+    this.$store.dispatch('initData');
+    
+      axios.get(config.URL + '/api/savedbeer',
+          {username: this.$store.getters.userCred.username,
+            headers: {
+              'Accept': 'application/json',
+              'Content-Type': 'application/json',
+            }
+            })
+                .then(response => {
+                    console.log(response);
+                    this.$store.dispatch('initUserBeer', response)
+                })
+                .catch(e=> {
+                  console.log(e)
+                });
+    }
 }
 </script>
 
