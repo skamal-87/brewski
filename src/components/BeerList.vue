@@ -5,9 +5,20 @@
             <option v-for="beer in beers">{{beer.nameDisplay}}</option>
         </select>
         <a href="#" class="btn btn-xs btn-success" @click="addBeer"><span class="glyphicon glyphicon-plus"></span> Add Beer</a>
-        <div>
-            <app-beers v-for="ub in usersBeers" :ub="ub" @yRemove="remove($event)"></app-beers>
-        </div>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th></th>
+                    <th>Beer Name</th>
+                    <th>Origin</th>
+                    <th>ABV</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <app-beers v-for="ub in usersBeers" :ub="ub" @yRemove="remove($event)"></app-beers>
+            </tbody>
+        </table>
     </div>
 </template>
 

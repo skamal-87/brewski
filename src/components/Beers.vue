@@ -1,26 +1,11 @@
 <template>
-<div class="container">
-        <div class="row mb-5">
-            <div class="col-sm-6 col-md-4 col-lg-3 mt-4">
-                <div class="card card-inverse card-info">
-                    <div class="card-block">
-                        <figure class="profile">
-                            <img :src="ub.icon" class="profile-avatar" alt="">
-                        </figure>
-                        <h4 class="card-title mt-3">{{ub.nameDisplay}}</h4>
-                        <div class="meta card-text">
-                            <p>{{ub.category}}</p>
-                        </div>
-                    </div>
-                    <div class="card-footer">
-                        <small>Alcohol by Volume: {{ub.abv}}</small>
-                        <button class="btn btn-info float-right btn-sm" @click="remove(ub)">Remove</button>
-                        <br>
-                    </div>
-                </div>
-        </div>
-        </div>
-</div>
+  <tr>
+    <td><img :src="ub.icon" alt="" height="100" width="100"></td>
+    <td>{{ub.nameDisplay}}</td>
+    <td>{{ub.category}}</td>
+    <td>{{ub.abv}}</td>
+    <td><button class="btn btn-info float-right btn-sm" @click="remove(ub)">Remove</button></td>
+  </tr>
 </template>
 
 <script>
@@ -66,5 +51,9 @@ li {
 
 a {
   color: #42b983;
+}
+
+.table > tbody > tr > td {
+     vertical-align: middle;
 }
 </style>
